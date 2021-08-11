@@ -9,6 +9,6 @@ app.get('/about', (req,res)=>{
     res.sendFile(__dirname + '/views/about.html')
 })
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 console.log('Server is running on PORT ', PORT)
