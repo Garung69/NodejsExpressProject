@@ -1,6 +1,15 @@
 const express = require('express')
 const app = express()
 
+app.use(express.urlencoded({extended:true}))
+app.set('view engine', 'hbs')
+
+app.post('/survey',(req,res)=>{
+    var nameInput = req.body.txtName;
+    var job = req.body.job;
+    res.render('survey',{name: nameInput, job:job});
+})
+
 app.get('/', (req,res)=>{
     res.sendFile(__dirname + '/views/home.html')
 })
