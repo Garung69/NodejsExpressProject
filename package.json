@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Garung69/TestTuHoc#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.1.2"
+    "hbs": "^4.1.2",
+    "mongodb": "^4.1.0"
   }
 }

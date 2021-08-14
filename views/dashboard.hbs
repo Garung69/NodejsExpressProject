@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATN - Dashboard</title>
+</head>
+<style> 
+    *{
+        background-color: #14192e;
+    }
+    span{
+        color: white;
+        font-family: Montserrat,sans-serif;
+        font-weight: 700;
+        background-color: unset;
+    }
+    .header{
+        width: 100%;
+        height: 120px;
+        position: fixed;
+        z-index: 1;
+        margin-top: -10px;
+        margin-left: -5px;
+        border-bottom: 1px solid slategray;
+        background-color: #14192e;
+    }
+    .left{
+        width: 30%;
+        height: 1500px;
+        float: left;
+        border-right:  1px solid slategray;
+        margin-top: 125px;
+        position: fixed;
+        background-color: #14192e;
+        transform: translate(0,-1%);
+    }
+
+    .body{
+        margin-top: 125px;
+        margin-left: 30%;
+        width: 64.6%;
+        height: 1500px;
+        float: right;
+        float: left;
+        background-color: #14192e;
+
+    }
+
+    .right{
+        width: 5%;
+        height: 1500px;
+        float: right;
+        background-color: #14192e;
+    }
+    .productBuyZone{
+        padding: 10px;
+        display: block;
+    }
+    .productBuyZone.active{
+        display: none;
+    }
+    .productSellZone{
+        padding: 10px;
+        display: none;
+    }
+    .productSellZone.active{
+        display: block;
+    }
+    .product{
+        width: 30%;
+        height: 450px;
+        float: right;
+        float: left;
+        margin-left: 20px;
+        margin-top: 50px;
+        border-radius: 29px;
+        background-image: linear-gradient( rgb(48, 115, 182), #18203f);
+    }
+    .product .Name{
+        width: 80%;
+        height: 10%;
+        transform: translate(40%,30%);
+        background-color: unset;
+    }
+    .product .Img{
+        height: 70%;
+        width: 80%;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        transform: translate(12%);
+    }
+    .product .Info{
+
+        width: 80%;
+        height: 20%;
+        transform: translate(12%);
+        background-color: unset;
+    }
+    button{
+        color: #fbfcfd;
+        padding: 10px 25px;
+        width: 35%;
+        margin-left: 8.5%;
+        background: transparent;
+        border: 1px solid #fff;
+        border-radius: 25px;
+        outline: none;
+        cursor: pointer;
+     }
+    button:hover{
+        background-color: darkorchid;
+    }
+    .statusProduct{
+        justify-content: space-between;
+    }
+    input{
+        background-color: white;
+        width: 100%;
+        height: 30px;
+    }
+    .developer{
+        width: 49%;
+        height: auto;
+        float: left;
+    }
+    .contact{
+        width: 49%;
+        height: auto;
+        float: right;
+    }
+    a{
+        text-decoration: none;
+        color: ghostwhite;
+    }
+</style>
+<script>
+    function toggleBuy(){
+            document.getElementById("Buy").classList.toggle("active");
+        }
+        function toggleSell(){
+            document.getElementById("Sell").classList.toggle("active");
+        }
+</script>
+<body>
+    <div class="container" >
+        <!--Header-->
+        <div class="header">
+            <img src="https://idme-marketplace.s3.amazonaws.com/WbWW8s5z5MpKoHZ7cGusWzgz" alt="" width="70px" height="70px" style="margin-left: 150px; transform: translate(0, 45%);" >
+            <span >ATN - Buy, Sell your Toys</span>
+
+            <span style="margin-left: 800px;">Hello <span style="color: aqua;">{{#User}} {{Username}} {{/User}}</span> how are  you today? :3</span>
+        </div>
+        <!--Left-->
+        <div class="left">
+            <div class="news">
+                <span style="margin-left: 40%; margin-top: 30px; color: darkorange; font-size: 30px;">News</span>
+                <iframe width="99%" height="350"
+                     src="https://www.youtube.com/watch?v=wmiIUN-7qhE">
+                 </iframe>
+                <span style="color: darkorange; font-size: 20px;">Toy Story 4 Trailer</span>
+            </div>
+            <div class="aboutUs" style="margin-top: 100px;">
+                <hr>
+                <span style="margin-top: 30px; color: darkorange; font-size: 30px;">About Us:</span> <br>
+                <span style="color: darkorange;"> ATN is a Vietnamese company which is selling toys to teenagers in many provinces all over Vietnam. We have many branches all over the country. Coming to ATN shop you can buy or sell any toy.</span>
+                    <br>
+                    <hr>
+                    <br>
+                <div class="developer">
+                    <span style="color: darkorange; font-size: 20px;">Developer</span> <br><br>
+                    <span> <a href="">Github </a></span>
+                </div>
+                <div class="contact">
+                    <span style="color: darkorange; font-size: 20px;">Contact</span> <br><br>
+                    <span> <a href = "mailto: 123456789awdstk.mk@gmail.com">Email</a></span> <br> <br>
+                    <span> <a href="https://www.facebook.com/profile.php?id=100021115452616">Facebook</a></span> <br> <br>
+                    <span> <a href = "https://t.me/thien201">Telegram</a></span> <br>
+                </div>
+            </div>
+        </div>
+        <!--Body-->
+        <div class="body">
+            <div class="statusProduct"> 
+                <button onclick="toggleBuy(); toggleSell()">Buy</button>
+                <Button onclick="toggleBuy(); toggleSell()">Sell</Button>
+            </div>
+            <div class="productBuyZone" id="Buy">
+                <div style=" transform: translate(0,50%);">
+                    <Span style="font-size: 25px; font-weight: 1000; margin-left: 43%;">All Toys</Span>
+                </div>
+                {{#each productData}}
+                    <div class="product"> 
+                        <div class="Name">
+                            <span style="font-size: 25px;">
+                                {{NameP}}
+                            </span> 
+                        </div>
+                        <a href="https://www.thetoyshop.com/">
+                        <div class="Img" style="background-image: url({{ImgP}});"> </div>
+                        </a>
+                        
+                        <div class="Info">
+                            <span>Seller: <span style="color: mediumturquoise;">{{SellerP}}</span> </span> <br>
+                            <span>Price: <span style="color: gold;">{{PriceP}}</span>$</span> <br>
+                            <span>Description: {{InfoP}}</span>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+
+
+            <div class="productSellZone" id="Sell">
+                <div class="addNewToy">
+                    <div style="transform: translate(42%, 80%);">
+                        <span style="color: darkorange; font-size: 30px;">Add new Toy</span>
+                    </div>
+                    <form action="/addNewToy" method="post">
+                    <div class="product" style="float: unset; margin-left: 35%;"> 
+                        <div class="Name" style="transform: translate(12%);">
+                            <span>Input Name:</span>
+                            <input type="text" required="required" name="newToyName">
+                        </div>
+                        <div class="Img" style="background-color: unset; height: 25%; margin-top: 5%;"> 
+                            <span>Input Image Link:</span>
+                            <input type="text" required="required" name="newToyImg">
+                            <p style="color: red; font-size: 15px; background-color: unset;">We only accept url link form internet!</p>
+                        </div>
+                        <div class="Info">
+                            <span>Input price:</span>
+                            <input type="text" required="required" name="newToyPrice"> <br>
+                            <span>Owner: </span>
+                            <input type="text" required="required" name="newToyOwner" value="{{#User}}{{Username}}{{/User}}" readonly="readonly">
+                            <span>Input Description:</span>
+                            <input type="text" name="newToyInfo" style="height: 70%;">
+                         </div>
+                         <button type="submit" value="addNewToy" style="margin-top: 30%; margin-left: 32%;">Sell</button>
+                    </div>
+                    </form>   
+                </div>
+                <div style=" transform: translate(0,50%);">
+                    <Span style="font-size: 25px; font-weight: 1000; margin-left: 43%;">Your Toys</Span>
+                </div>
+                {{#each ownProductData}}
+                    <div class="product"> 
+                        <div class="Name">
+                            
+                            <span>
+                                {{NameP}}
+                            </span>
+                            
+                        </div>
+                        <div class="Img" style="background-image: url({{ImgP}});"> 
+                            
+                        </div>
+                        <div class="Info">
+                            <span>Owner: <span style="color: mediumturquoise;">{{SellerP}}</span> </span> <br>
+                            <span>Price: <span style="color: gold;">{{PriceP}}</span>$</span> <br>
+                            <span>Description: {{InfoP}}</span>
+                        </div>
+                        <div class="modify">
+                            <form action="/delete" method="post">
+                                <button type="submit" style="height: 35px; margin: auto;">UnSell</button>
+                                <input type="text" name="idP" value="{{_id}}" style="display: none;">
+                                <input type="text" name="ownP" value="{{SellerP}}" style="display: none;">
+                            </form>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <!--Right-->
+        <div class="right"></div>
+        <!--Footer-->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
