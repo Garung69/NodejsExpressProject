@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<script>
+    function toggleSL(){
+        document.getElementById("PM").classList.toggle("active");
+     }
+    function togglePM(){
+        document.getElementById("SL").classList.toggle("active");
+    }
+</script>
+<body>
+    <div class="container" >
+        <!--Header-->
+        <div class="header">
+            <img src="https://idme-marketplace.s3.amazonaws.com/WbWW8s5z5MpKoHZ7cGusWzgz" alt="" width="70px" height="70px" style="margin-left: 150px; transform: translate(0, 45%);" >
+            <span >ATN - Buy, Sell your Toys</span>
+
+            <span style="margin-left: 800px;">Hello <span style="color: red;">Admin {{#User}} {{Username}} {{/User}}</span> how are  you today? :3</span>
+        </div>
+        <!--Left-->
+        <div class="left">
+            <div class="news">
+                <span style="margin-left: 40%; margin-top: 30px; color: darkorange; font-size: 30px;">News</span>
+                <br>
+                <br>
+                <span> 
+                    {{#each adminServer}} <br> {{ServerLog}} <br> {{/each}}
+                </span>
+            </div>
+        </div>
+        <!--Body-->
+        <div class="body">
+            <div class="statusManage"> 
+                <Button onclick="togglePM(); toggleSL()">Server Manage</Button>
+                <button onclick="toggleSL(); togglePM()">Product Manage</button>
+                <br>
+            </div>
+            <div class="seeLog" id="SL">
+                <br>
+                <span >Log server:</span> <br>
+                <hr>
+                <span> 
+                    {{#each server}} <br> {{ServerLog}} <br> {{/each}}
+                </span>
+            </div>
+
+            <div class="productManager" id="PM">
+                <br>
+                <div style=" transform: translate(0,50%);">
+                    <Span style="font-size: 25px; font-weight: 1000; margin-left: 43%;">All Toys</Span>
+                </div>
+                {{#each productData}}
+                    <div class="product"> 
+                        <div class="Name">
+                            <span style="font-size: 25px;">
+                                {{NameP}}
+                            </span> 
+                        </div>
+                        <a href="https://www.thetoyshop.com/">
+                        <div class="Img" style="background-image: url({{ImgP}});"> </div>
+                        </a>
+                        
+                        <div class="Info">
+                            <span>Seller: <span style="color: mediumturquoise;">{{SellerP}}</span> </span> <br>
+                            <span>Price: <span style="color: gold;">{{PriceP}}</span>$</span> <br>
+                            <span>Description: {{InfoP}}</span>
+                        </div>
+                        <div class="modify">
+                            <form action="/delete" method="post">
+                                <button type="submit" style="height: 35px; margin: auto;">Delete</button>
+                                <input type="text" name="idP" value="{{_id}}" style="display: none;">
+                                <input type="text" name="ownP" value="{{SellerP}}" style="display: none;">
+                                <input type="text" name="role" value="admin" style="display: none;">
+                            </form>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <!--Right-->
+        <div class="right"></div>
+        <!--Footer-->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
