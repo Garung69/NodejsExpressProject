@@ -86,7 +86,7 @@ function getCurrentDate(){
     return new Date().toLocaleString("vi-VN");
 }
 
-//function to create AdminLog
+//function to create UserLog
 async function createLog(username,action){
     const dbo = await getDB();
     var log = "User: " +username+ " had " + action + " at " + getCurrentDate();
@@ -95,11 +95,11 @@ async function createLog(username,action){
     await dbo.collection("server").insertOne(newLog);
 }
 
-//function to create userLog
+//function to create AdminLog
 async function createLogAdmin(username, act){
     const dbo = await getDB();
     var log = username+ " had " + act + " at " + getCurrentDate();
-    var id = id1;
+    var id = 1;
     console.log(log);
     const newLog = {ServerLog: log,Id: id}
     await dbo.collection("server").insertOne(newLog);
