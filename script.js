@@ -5,7 +5,7 @@ const {MongoClient,ObjectId} = require('mongodb');
 const URL = 'mongodb+srv://garung69:tavip123@cluster0.dvp5p.mongodb.net/test';
 const DATABASE_NAME = "GCH0803DB"
 
-//get data form database
+//get/set data form database
 async function getDB() {
     const client = await MongoClient.connect(URL);
     const dbo = client.db(DATABASE_NAME);
