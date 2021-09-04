@@ -36,7 +36,46 @@
         outline: none;
         cursor: pointer;
     }
+    .notify{
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 25%;
+        height: 25%;
+        position: fixed;
+        top: 150px;
+        right: 45px;
+        display: block;
+    }
+    .notify.active{
+        display: none;
+    }
+    .content{
+        margin-top: 10%;
+        padding: 20px;
+        padding-left: 30px;
+    }
+    .text{
+        width: auto;
+        height: 50px;
+        margin-top: 15px;
+        margin-left: 60px;
+    }
+    .text span{
+    color: dodgerblue;
+    font-family: Montserrat,sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+}
+    .wait{
+        padding: 30px;
+    }
 
+    .wait span{
+        color: mediumorchid;
+        font-family: Montserrat,sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+    }
+    
     .login{
         background-color: rgb(255, 255, 255);
         width: 25%;

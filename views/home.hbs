@@ -7,6 +7,11 @@
     <title>ATN - Get toys for free</title>
     <link rel="stylesheet" href="home.css">
     <script>
+        function toggleNotifyPopup(){
+            if(document.getElementById("popup-0").classList.toggle("active") == false){
+                document.getElementById("popup-0").classList.toggle("active");
+            }
+        }
         function toggleLogPopup(){
             document.getElementById("popup-1").classList.toggle("active");
         }
@@ -17,12 +22,32 @@
 </head>
 <body>
     <div class="container">
-            <div class="header" > 
+            <div class="header" >
                 <img src="https://idme-marketplace.s3.amazonaws.com/WbWW8s5z5MpKoHZ7cGusWzgz" class="logo" alt="logo" width="170px" height="170px">
                 
-                <button type="button" onclick="toggleLogPopup()">
+                <button type="button" onclick="toggleNotifyPopup(),toggleLogPopup()">
                     login
                 </button>    
+            </div>
+            {{!-- notify --}}
+            <div class="notify" id="popup-0">
+                <div class="nt">
+                    <div class="content">  
+                        <img src="{{icon}}" alt="" width="50px" height="50px" style="float: left;">
+                        {{!-- https://pic.onlinewebfonts.com/svg/img_281023.png --}}
+                        <div class="text">
+                            <span>
+                                {{notify1}}
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="wait" style="margin: 0 auto;">
+                        <span style="color: mediumorchid; font-size: 15px;">
+                            {{notify2}}
+                        </span>
+                    </div>
+                </div>
             </div>
             <!--Login-->
             <div class="login" id="popup-1">
@@ -58,11 +83,12 @@
                         <br>
                         <p class="textlogin">Have an account? <span style="text-decoration: underline; color: darkturquoise;"  onclick="toggleLogPopup();toggleResPopup()"> Login now!</span></p> 
                         
-                             <button style="background-color: dimgrey; margin-bottom:  5px; margin-left:  75%;" onclick="toggleLogPopup();toggleResPopup()">
+                            <div class="close-button">
+                            <button style="background-color: dimgrey; margin-bottom:  5px; margin-left:  75%;" onclick="toggleLogPopup();toggleResPopup()">
                                 &times;
                                Cancel
                             </button>
-                            <div class="close-button"></div>
+                            </div>
                 </div>
                 
             </div>

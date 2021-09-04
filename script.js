@@ -1,5 +1,5 @@
 //declare library mongodb
-const {MongoClient,ObjectId} = require('mongodb');
+const {MongoClient,ObjectId, Double} = require('mongodb');
 
 //declare database
 const URL = 'mongodb+srv://garung69:tavip123@cluster0.dvp5p.mongodb.net/test';
@@ -19,8 +19,9 @@ async function registerAcc(newAccount, username) {
     //Can only create a new account with a username that doesn't exist in the database.
     if(Account == undefined){
         const newS = await dbo.collection("account").insertOne(newAccount);
+        return true;
     }
-    else console.log("Account already exists");
+    else return false;
 }
 
 //function to login
@@ -56,9 +57,26 @@ async function getUser(username){
 }
 
 //function to add new product
-async function addNewToy(newProduct){
-    const dbo = await getDB();
-    const Added = await dbo.collection('product').insertOne(newProduct);
+async function addNewToy(toyName, toyImg, toyPrice, toyInfo, username){
+    dbo = await getDB();
+    toyName = toyName;
+    toyImg = toyImg;
+    username = username;
+    toyPrice = toyPrice;
+    toyInfo = toyInfo;
+    console.log(toyPrice);
+    const nPrice = toyPrice.slice(0, toyPrice.lastIndexOf('$'));
+    console.log(nPrice);
+    console.log(toyPrice.indexOf('$'));
+    console.log(isNaN(parseInt(nPrice)));
+    if((toyPrice.indexOf('$') != -1) && (!isNaN(parseInt(nPrice)))){
+        const newProduct = {NameP:toyName,ImgP: toyImg,SellerP:username, PriceP: toyPrice, InfoP: toyInfo};
+        const Added = await dbo.collection('product').insertOne(newProduct);
+        createLog(username, "add a product to shop");
+    }
+    else{
+        console.log('Price Wrong!');
+    }
 }
 
 //function to delete a product
@@ -70,7 +88,7 @@ async function deleteProduct(idInput) {
 //function to get UserLog
 async function getLogServer(){
     const dbo = await getDB();
-    const server = await dbo.collection("server").find({}).toArray();
+    const server = await dbo.collection("server").find({Id: undefined}).toArray();
     return server;
 }
 

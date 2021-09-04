@@ -13,7 +13,10 @@ APP.set('view engine','hbs')
 
 //render home file when open default localhost
 APP.get('/',async (req,res)=>{
-    res.render('home');
+    const notify1 = "Wellcome to ATN shop";
+    const notify2 = "Just Login or Create your free account"
+    const icon = "https://gifimage.net/wp-content/uploads/2017/08/smiley-gif-2.gif";
+    res.render('home',{notify1: notify1, notify2: notify2, icon: icon});
 })
 //Executed when receiving registration request
 APP.post('/register',async (req,res)=>{
@@ -22,11 +25,21 @@ APP.post('/register',async (req,res)=>{
     const password = req.body.password;
     const newAccount = {Username:username,Password: password};
     //Execute add new data  
-    await registerAcc(newAccount, username);
-    //Create log for admin manage
-    createLog(username, "register");
-    //render home file again
-    res.redirect('/');
+    const result  = await registerAcc(newAccount, username);
+    if(result==true){
+        //Create log for admin manage
+        createLog(username, "register");
+        const notify1 = "Create Account successful!";
+        const notify2 = "Now login to shop and enjoy"
+        const icon = "https://cdn.dribbble.com/users/147386/screenshots/5315437/success-tick-dribbble.gif";
+        res.render('home',{notify1: notify1, notify2: notify2, icon: icon});
+    }else{
+        const notify1 = "Create Account failure, Account already exist!";
+        const notify2 = "Try againt!"
+        const icon = "https://cdn.dribbble.com/users/251873/screenshots/9288094/13539-sign-for-error-or-explanation-alert.gif";
+        res.render('home',{notify1: notify1, notify2: notify2, icon: icon});
+    }
+    
 })
 
 //Executed when receiving login request
@@ -48,8 +61,13 @@ APP.post('/login',async (req,res)=>{
         const adminServer = await getLogAdminServer();
         res.render('admin', {server: server,productData: allProduct,adminServer: adminServer});
     }
-    //if not found user => render home file again
-    else res.render('home');
+    //if not found user => render home file againt
+    else{
+        const notify1 = "Password or Username is not correct";
+        const notify2 = "Please try to login againt or create a new account"
+        const icon = "https://cdn.dribbble.com/users/251873/screenshots/9288094/13539-sign-for-error-or-explanation-alert.gif";
+        res.render('home',{notify1: notify1, notify2: notify2, icon: icon});
+    } 
 })
 
 //Executed when receiving add product request
@@ -61,11 +79,12 @@ APP.post('/addNewToy',async (req,res)=>{
         var toyInfo = "None!";
     } else toyInfo = req.body.newToyInfo;
     const username = req.body.newToyOwner;
-    const newProduct = {NameP:toyName,ImgP: toyImg,SellerP:username, PriceP: Double(toyPrice), InfoP: toyInfo};
+    await addNewToy(toyName, toyImg, toyPrice, toyInfo, username);
+    
     //add new product
-    await addNewToy(newProduct);
+    
     //create log
-    createLog(username, "add a product to shop");
+
     //get data
     const user = await getUser(username);
     const allProduct = await getAllProduct();
@@ -96,7 +115,6 @@ APP.post('/delete',async (req,res)=>{
     }
     
 })
-
 //port declaration
 const PORT = process.env.PORT || 5000;
 //Ask the server to point to the port

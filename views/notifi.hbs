@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<style>
+
+    .nt{
+        width: 500px;
+        height: 300px;
+        margin: 7% auto;
+        border: 2px solid steelblue;
+    }
+    .content{
+        margin-top: 10%;
+        padding: 20px;
+        padding-left: 30px;
+    }
+    .text{
+        width: auto;
+        height: 50px;
+        margin-top: 15px;
+        margin-left: 60px;
+    }
+    span{
+    color: dodgerblue;
+    font-family: Montserrat,sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+}
+    .wait{
+        padding: 30px;
+    }
+</style>
+<body>
+    <div class="nt">
+        <div class="content">  
+            <img src="{{icon}}" alt="" width="50px" height="50px" style="float: left;">
+            {{!-- https://pic.onlinewebfonts.com/svg/img_281023.png --}}
+            <div class="text">
+                <span>
+                    {{notify}}
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="wait" style="margin-left: 150px;">
+            <span style="color: mediumorchid; font-size: 15px;">
+                Just wait 3s!
+            </span>
+        </div>
+    </div>
+</body>
+</html>
