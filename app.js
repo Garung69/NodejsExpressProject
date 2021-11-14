@@ -11,13 +11,20 @@ APP.use(EXPRESS.static('resource'))
 APP.use(EXPRESS.urlencoded({extended:true}))
 APP.set('view engine','hbs')
 
-//render home file when open default localhost
 APP.get('/',async (req,res)=>{
     const notify1 = "Wellcome to ATN shop";
     const notify2 = "Just Login or Create your free account"
     const icon = "https://gifimage.net/wp-content/uploads/2017/08/smiley-gif-2.gif";
-    res.render('home',{notify1: notify1, notify2: notify2, icon: icon});
+    res.render('fun',{notify1: notify1, notify2: notify2, icon: icon});
 })
+
+// //render home file when open default localhost
+// APP.get('/',async (req,res)=>{
+//     const notify1 = "Wellcome to ATN shop";
+//     const notify2 = "Just Login or Create your free account"
+//     const icon = "https://gifimage.net/wp-content/uploads/2017/08/smiley-gif-2.gif";
+//     res.render('home',{notify1: notify1, notify2: notify2, icon: icon});
+// })
 //Executed when receiving registration request
 APP.post('/register',async (req,res)=>{
     //Receive input data
